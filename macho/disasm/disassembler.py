@@ -7,7 +7,7 @@ class UnknownInstruction(Exception):
   def __init__(self, bytes):
     self.bytes = bytes
   def __str__(self):
-    return repr(self.bytes)
+    return repr(map(hex, self.bytes))
 
 class Disassembler(object):
   '''
