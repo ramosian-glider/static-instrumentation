@@ -1,0 +1,37 @@
+# <mach-o/loader.h>
+MH_MAGIC = 0xfeedface
+MH_CIGAM = 0xcefaedfe
+MH_MAGIC_64 = 0xfeedfacf
+MH_CIGAM_64 = 0xcffaedfe
+
+LC_SEGMENT = 0x1
+LC_SYMTAB = 0x2
+# TODO(glider): more here
+LC_DYSYMTAB = 0xb
+LC_ID_DYLIB = 0xd
+LC_SEGMENT_64 = 0x19
+LC_REQ_DYLD = 0x80000000
+LC_DYLD_INFO_ONLY = 0x22 | LC_REQ_DYLD
+LC_LOAD_DYLIB = 0xc
+LC_UUID = 0x1b
+LC_VERSION_MIN_MACOSX = 0x24
+LC_FUNCTION_STARTS = 0x26
+
+def LoadCmdToStr(cmd):
+  strs = {
+    LC_SEGMENT: 'LC_SEGMENT',
+    LC_SYMTAB: 'LC_SYMTAB',
+    LC_DYSYMTAB: 'LC_DYSYMTAB',
+    LC_SEGMENT_64: 'LC_SEGMENT_64',
+    LC_ID_DYLIB: 'LC_ID_DYLIB',
+    LC_DYLD_INFO_ONLY: 'LC_DYLD_INFO_ONLY',
+    LC_LOAD_DYLIB: 'LC_LOAD_DYLIB',
+    LC_UUID: 'LC_UUID',
+    LC_VERSION_MIN_MACOSX: 'LC_VERSION_MIN_MACOSX',
+    LC_FUNCTION_STARTS: 'LC_FUNCTION_STARTS',
+  }
+  if cmd in strs:
+    return strs[cmd]
+  else:
+    return ''
+

@@ -1,0 +1,49 @@
+
+../dylib-test/increment.dylib:     file format mach-o-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000eb0 <_inc_value>:
+ eb0:	55                   	push   %rbp
+ eb1:	48 89 e5             	mov    %rsp,%rbp
+ eb4:	89 7d fc             	mov    %edi,-0x4(%rbp)
+ eb7:	8b 45 fc             	mov    -0x4(%rbp),%eax
+ eba:	48 63 c8             	movslq %eax,%rcx
+ ebd:	48 8d 15 3c 01 00 00 	lea    0x13c(%rip),%rdx        # 1000 <_glob>
+ ec4:	48 be 04 00 00 00 00 	movabs $0x4,%rsi
+ ecb:	00 00 00 
+ ece:	48 0f af ce          	imul   %rsi,%rcx
+ ed2:	48 89 d6             	mov    %rdx,%rsi
+ ed5:	48 01 ce             	add    %rcx,%rsi
+ ed8:	8b 0e                	mov    (%rsi),%ecx
+ eda:	83 c1 01             	add    $0x1,%ecx
+ edd:	48 63 c0             	movslq %eax,%rax
+ ee0:	48 be 04 00 00 00 00 	movabs $0x4,%rsi
+ ee7:	00 00 00 
+ eea:	48 0f af c6          	imul   %rsi,%rax
+ eee:	48 01 c2             	add    %rax,%rdx
+ ef1:	89 0a                	mov    %ecx,(%rdx)
+ ef3:	5d                   	pop    %rbp
+ ef4:	c3                   	retq   
+ ef5:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+ efa:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+0000000000000f00 <_read_value>:
+ f00:	55                   	push   %rbp
+ f01:	48 89 e5             	mov    %rsp,%rbp
+ f04:	89 7d fc             	mov    %edi,-0x4(%rbp)
+ f07:	8b 45 fc             	mov    -0x4(%rbp),%eax
+ f0a:	48 63 c0             	movslq %eax,%rax
+ f0d:	48 8d 0d ec 00 00 00 	lea    0xec(%rip),%rcx        # 1000 <_glob>
+ f14:	48 ba 04 00 00 00 00 	movabs $0x4,%rdx
+ f1b:	00 00 00 
+ f1e:	48 0f af c2          	imul   %rdx,%rax
+ f22:	48 01 c1             	add    %rax,%rcx
+ f25:	8b 01                	mov    (%rcx),%eax
+ f27:	89 45 f4             	mov    %eax,-0xc(%rbp)
+ f2a:	8b 45 f4             	mov    -0xc(%rbp),%eax
+ f2d:	89 45 f8             	mov    %eax,-0x8(%rbp)
+ f30:	8b 45 f8             	mov    -0x8(%rbp),%eax
+ f33:	5d                   	pop    %rbp
+ f34:	c3                   	retq   
