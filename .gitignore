@@ -1,3 +1,9 @@
 
 
 *.dylib
+*.dSYM
+*.swp
+*.pyc
+*.bak
+*.o
+a.out
